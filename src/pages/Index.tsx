@@ -5,6 +5,7 @@ import { IconCloudDemo } from "@/components/technology/technologyicon";
 
 
 
+
 const Portfolio = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -252,10 +253,12 @@ const Portfolio = () => {
                   className="w-100 h-100 lg:w-[35rem] lg:h-[35rem] rounded-[0rem] object-cover border-4 border-white-500 shadow-2xl bg-white transition-all duration-300 absolute top-0 left-0 opacity-0 group-hover:opacity-100"
                   style={{ pointerEvents: 'none' }}
                 />
+              
               </div>
             </div>
             </div>
           </div>
+
         </section>
 
         {/* About Section */}
