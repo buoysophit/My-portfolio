@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Mail, Phone, Github, Linkedin, ArrowUp, ChevronDown, Menu, X, Globe } from 'lucide-react';
 import { SiProbot } from "react-icons/si";
+import { IconCloudDemo } from "@/components/technology/technologyicon";
+
 
 
 const Portfolio = () => {
@@ -205,7 +207,7 @@ const Portfolio = () => {
                   </span>
                 </h1>
                 <p className="text-xl md:text-2xl mb-8 text-gray-600 dark:text-gray-300">
-                  ខ្ញុំជានិស្សិតបរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ នៅសាកលវិទ្យាល័យភ្នំពេញ។ មានចំណង់ចំណូលចិត្តផ្នែក IT Teachnology Sport And Game​, ការអភិវឌ្ឍកម្មវិធី និងបណ្តាញ។ មានបទពិសោធន៍គម្រោងសាលា និងការអនុវត្តការងារពាក់ព័ន្ធ computer science។
+                  ខ្ញុំជានិស្សិតបរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ នៅសាកលវិទ្យាល័យភ្នំពេញ។ មានចំណង់ចំណូលចិត្តផ្នែក IT Teachnology Sport Game​ ការអភិវឌ្ឍកម្មវិធី និងបណ្តាញ។ មានបទពិសោធន៍គម្រោងសាលា និងការអនុវត្តការងារពាក់ព័ន្ធ computer science។
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <button
@@ -240,12 +242,12 @@ const Portfolio = () => {
             <div className="w-full lg:w-1/3 flex justify-center lg:justify-end mb-8 lg:mb-0">
               <div className="relative group">
                 <img
-                  src="src/assets/profile-pixel.jpg"
+                  src="/assets/profile-pixel.jpg"
                   alt="Buoy Sophit"
                   className="w-100 h-100 lg:w-[35rem] lg:h-[35rem] rounded-[0rem] object-cover border-4 border-white-500 shadow-2xl bg-white transition-all duration-300 group-hover:opacity-0"
                 />
                 <img
-                  src="src/assets/profile.jpg"
+                  src="/assets/profile.jpg"
                   alt="Buoy Sophit"
                   className="w-100 h-100 lg:w-[35rem] lg:h-[35rem] rounded-[0rem] object-cover border-4 border-white-500 shadow-2xl bg-white transition-all duration-300 absolute top-0 left-0 opacity-0 group-hover:opacity-100"
                   style={{ pointerEvents: 'none' }}
@@ -301,106 +303,17 @@ const Portfolio = () => {
             </div>
           </div>
         </section>
-        {/* Technologies Section */}
+
 <section id="technologies" className="py-20 bg-gray-50 dark:bg-gray-800">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-16">
       <h2 className="text-3xl md:text-4xl font-bold mb-4">បច្ចេកវិទ្យា (Technologies)</h2>
       <p className="text-lg text-gray-600 dark:text-gray-300">បច្ចេកវិទ្យាដែលខ្ញុំមានបទពិសោធន៍</p>
     </div>
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 justify-items-center">
-      {/* HTML */}
-      <div className="flex flex-col items-center group">
-        <div className="w-28 h-28 bg-white dark:bg-gray-900 rounded-0xl shadow-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-base">HTML5</span>
-      </div>
-      {/* CSS */}
-      <div className="flex flex-col items-center group">
-        <div className="w-28 h-28 bg-white dark:bg-gray-900 rounded-0xl shadow-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-base">CSS3</span>
-      </div>
-      {/* JavaScript */}
-      <div className="flex flex-col items-center group">
-        <div className="w-28 h-28 bg-white dark:bg-gray-900 rounded-0xl shadow-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-base">JavaScript</span>
-      </div>
-      {/* ReactJS */}
-      <div className="flex flex-col items-center group">
-        <div className="w-28 h-28 bg-white dark:bg-gray-900 rounded-0xl shadow-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="ReactJS" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-base">ReactJS</span>
-      </div>
-      {/* AWS */}
-      <div className="flex flex-col items-center group">
-        <div className="w-28 h-28 bg-white dark:bg-gray-900 rounded-0xl shadow-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="Amazon Web Services" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-base">AWS</span>
-      </div>
-      {/* C */}
-      <div className="flex flex-col items-center group">
-        <div className="w-28 h-28 bg-white dark:bg-gray-900 rounded-0xl shadow-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-base">C</span>
-      </div>
-      {/* C++ */}
-      <div className="flex flex-col items-center group">
-        <div className="w-28 h-28 bg-white dark:bg-gray-900 rounded-0xl shadow-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-base">C++</span>
-      </div>
-      {/* C# */}
-      <div className="flex flex-col items-center group">
-        <div className="w-28 h-28 bg-white dark:bg-gray-900 rounded-0xl shadow-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-base">C#</span>
-      </div>
-      {/* Laravel */}
-      <div className="flex flex-col items-center group">
-        <div className="w-28 h-28 bg-white dark:bg-gray-900 rounded-0xl shadow-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-base">Laravel</span>
-      </div>
-      {/* WordPress */}
-      <div className="flex flex-col items-center group">
-        <div className="w-28 h-28 bg-white dark:bg-gray-900 rounded-0xl shadow-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-base">WordPress</span>
-      </div>
-      {/* SQL Server */}
-      <div className="flex flex-col items-center group">
-        <div className="w-28 h-28 bg-white dark:bg-gray-900 rounded-0xl shadow-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-base">SQL Server</span>
-      </div>
-      {/* MySQL */}
-      <div className="flex flex-col items-center group">
-        <div className="w-28 h-28 bg-white dark:bg-gray-900 rounded-0xl shadow-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" className="w-24 h-24" />
-        </div>
-        <span className="font-semibold text-base">MySQL</span>
-      </div>
-      {/* Flutter */}
-      <div className="flex flex-col items-center group">
-        <div className="w-28 h-28 bg-white dark:bg-gray-900 rounded-0xl shadow-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-base">Flutter</span>
-      </div>
+    <div className="mb-12 flex justify-center">
+      <IconCloudDemo />
     </div>
+    {/* ...your existing grid of icons... */}
   </div>
 </section>
 
@@ -565,6 +478,46 @@ const Portfolio = () => {
           </div>
         </section>
 
+    {/* Non-Technical Skills Section */}
+    <section id="non-technical-skills" className="py-20 bg-white dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">ជំនាញមិនមែនបច្ចេកទេស (Non-Technical Skills)</h2>
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 justify-items-center">
+        {/* Canva */}
+        <div className="flex flex-col items-center group">
+        <div className="w-32 h-32 bg-blue-50 dark:bg-gray-800 rounded-0xl shadow-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+          <img src="/assets/canva.webp" alt="Canva" className="w-20 h-20" />
+        </div>
+        <span className="font-semibold text-lg">Canva</span>
+        </div>
+        {/* CapCut */}
+        <div className="flex flex-col items-center group">
+        <div className="w-32 h-32 bg-blue-50 dark:bg-gray-800 rounded-0xl shadow-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+          <img src="/assets/capcut.jpg" alt="CapCut" className="w-20 h-20" />
+        </div>
+        <span className="font-semibold text-lg">CapCut</span>
+        </div>
+        {/* Microsoft Office */}
+        <div className="flex flex-col items-center group">
+        <div className="w-32 h-32 bg-blue-50 dark:bg-gray-800 rounded-0xl shadow-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+          <img src="/assets/office.webp" alt="Microsoft Office" className="w-20 h-20" />
+        </div>
+        <span className="font-semibold text-lg">Microsoft Office</span>
+        </div>
+        {/* Linux Ricing */}
+        <div className="flex flex-col items-center group">
+        <div className="w-32 h-32 bg-blue-50 dark:bg-gray-800 rounded-0xl shadow-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux Ricing" className="w-20 h-20" />
+        </div>
+        <span className="font-semibold text-lg">Linux Ricing</span>
+        </div>
+      </div>
+      </div>
+    </section>
+
+  
         {/* Projects Section */}
         <section id="projects" className="py-20 bg-white dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -632,7 +585,7 @@ const Portfolio = () => {
       {[1,2,3,4,5,6,7,1,2,3,4,5,6,7].map((num, idx) => (
         <img
         key={idx}
-        src={`src/assets/certificate/${num}.png`}
+        src={`/assets/certificate/${num}.png`}
         alt={`Certificate ${num}`}
         className="h-64 w-auto rounded-0xl shadow-lg bg-white p-4"
         />
@@ -652,6 +605,8 @@ const Portfolio = () => {
     </div>
   </div>
 </section>
+
+
 
         {/* Contact Section */}
         <section id="contact" className="py-20 bg-white dark:bg-gray-900">
