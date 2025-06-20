@@ -58,7 +58,23 @@ const Portfolio = () => {
     const message = (document.getElementById('message') as HTMLTextAreaElement).value;
 
     console.log('Form submitted:', { name, email, message });
-    alert('សារបានផ្ញើរួចរាល់! (Message sent successfully!)');
+    // Show styled alert using Tailwind classes
+    const alertDiv = document.createElement('div');
+    alertDiv.innerText = 'សារបានផ្ញើរួចរាល់!';
+    alertDiv.className = `
+      fixed top-8 left-1/2 -translate-x-1/2
+      px-8 py-4 rounded-0xl shadow-2xl font-bold text-lg z-[9999]
+      transition-opacity duration-300
+      ${darkMode
+      ? 'bg-gray-900 text-white border border-gray-700'
+      : 'bg-white text-black border border-gray-200'
+      }
+    `;
+    document.body.appendChild(alertDiv);
+    setTimeout(() => {
+      alertDiv.style.opacity = '0';
+      setTimeout(() => document.body.removeChild(alertDiv), 300);
+    }, 2000);
 
     // Clear form
     (document.getElementById('name') as HTMLInputElement).value = '';
@@ -103,12 +119,12 @@ const Portfolio = () => {
                 >
                   {lang === 'kh' ? (
                     <>
-                      <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/gb.svg" alt="English" className="w-10 h-5 mr-1 rounded-sm" />
+                      <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/gb.svg" alt="English" className="w-10 h-5 mr-1 rounded-0" />
                       <span>EN</span>
                     </>
                   ) : (
                     <>
-                      <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/kh.svg" alt="Khmer" className="w-10 h-5 mr-1 rounded-sm" />
+                      <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/kh.svg" alt="Khmer" className="w-10 h-5 mr-1 rounded-0" />
                       <span>KH</span>
                     </>
                   )}
@@ -236,27 +252,36 @@ const Portfolio = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-0xl">
                     <h3 className="font-semibold text-blue-600 dark:text-blue-400">អាសយដ្ឋាន</h3>
-                    <p className="text-base">371 St. Thik Thla, Sen Sok, Phnom Penh</p>
+                    <p className="text-base">371 St. Thik Thla, Sen Sok, Phnom Penh Cambodia</p>
                   </div>
                   <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-0xl">
                     <h3 className="font-semibold text-green-600 dark:text-green-400">លេខទូរស័ព្ទ</h3>
-                    <p className="text-base">088 622 4813 / 076 429 0073</p>
+                    <p className="text-base">088 622 4813 Telegram</p>
+                    <p className="text-base">076 429 0073</p>
                   </div>
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-blue-100 to-green-100 dark:from-gray-800 dark:to-gray-700 p-8 rounded-0xl">
+                <div className="bg-gradient-to-br from-blue-100 to-green-100 dark:from-gray-800 dark:to-gray-700 p-8 rounded-0xl">
                 <h3 className="text-xl font-semibold mb-4">ការអប់រំ</h3>
                 <ul className="space-y-3">
                   <li className="flex items-center">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
-                    បរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ, RUPP (2021-2025)
+                  <div className="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
+                  Bachelor Degree of Computer Science at Royal University Of Phnom Penh (2021-2025)
                   </li>
                   <li className="flex items-center">
-                    <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                    បញ្ចប់ថ្នាក់ទី១២, Hun Sen Thmor Pouk High School (2018-2021)
+                  <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                  Graduated at Hun Sen Thmor Pouk High School (2018-2021)
+                  </li>
+                  <li className="flex items-center">
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
+                  Graduated at Phum Thmey Secondary School
+                  </li>
+                  <li className="flex items-center">
+                  <div className="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
+                  Graduated at Rolom Chrey Primary School
                   </li>
                 </ul>
-              </div>
+                </div>
             </div>
           </div>
         </section>
@@ -420,28 +445,28 @@ const Portfolio = () => {
             <div>
               <div className="flex justify-between mb-1">
                 <span>HTML/CSS/JS</span>
-                <span>៩០%</span>
+                <span>60%</span>
               </div>
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                <div className="bg-blue-600 h-2 rounded-full" style={{width: '90%'}}></div>
+                <div className="bg-blue-600 h-2 rounded-full" style={{width: '60%'}}></div>
               </div>
             </div>
             <div>
               <div className="flex justify-between mb-1">
                 <span>PHP, Laravel</span>
-                <span>៨៥%</span>
+                <span>50%</span>
               </div>
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                <div className="bg-blue-600 h-2 rounded-full" style={{width: '85%'}}></div>
+                <div className="bg-blue-600 h-2 rounded-full" style={{width: '50%'}}></div>
               </div>
             </div>
             <div>
               <div className="flex justify-between mb-1">
                 <span>ReactJS, Flutter</span>
-                <span>៨០%</span>
+                <span>60%</span>
               </div>
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                <div className="bg-blue-600 h-2 rounded-full" style={{width: '80%'}}></div>
+                <div className="bg-blue-600 h-2 rounded-full" style={{width: '50%'}}></div>
               </div>
             </div>
           </div>
@@ -457,19 +482,19 @@ const Portfolio = () => {
             <div>
               <div className="flex justify-between mb-1">
                 <span>MySQL, PostgreSQL</span>
-                <span>៨៥%</span>
+                <span>50%</span>
               </div>
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                <div className="bg-purple-600 h-2 rounded-full" style={{width: '85%'}}></div>
+                <div className="bg-purple-600 h-2 rounded-full" style={{width: '50%'}}></div>
               </div>
             </div>
             <div>
               <div className="flex justify-between mb-1">
                 <span>English</span>
-                <span>៧០%</span>
+                <span>50%</span>
               </div>
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                <div className="bg-purple-600 h-2 rounded-full" style={{width: '70%'}}></div>
+                <div className="bg-purple-600 h-2 rounded-full" style={{width: '50%'}}></div>
               </div>
             </div>
           </div>
@@ -485,7 +510,7 @@ const Portfolio = () => {
             <div>
               <div className="flex justify-between mb-1">
                 <span>Install Hardware</span>
-                <span>៩០%</span>
+                <span>9០%</span>
               </div>
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                 <div className="bg-green-600 h-2 rounded-full" style={{width: '90%'}}></div>
@@ -494,19 +519,28 @@ const Portfolio = () => {
             <div>
               <div className="flex justify-between mb-1">
                 <span>Install Software</span>
-                <span>៨៥%</span>
+                <span>90%</span>
               </div>
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                <div className="bg-green-600 h-2 rounded-full" style={{width: '85%'}}></div>
+                <div className="bg-green-600 h-2 rounded-full" style={{width: '90%'}}></div>
               </div>
             </div>
             <div>
               <div className="flex justify-between mb-1">
                 <span>Repair PC & Laptop</span>
-                <span>៨០%</span>
+                <span>80%</span>
               </div>
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                 <div className="bg-green-600 h-2 rounded-full" style={{width: '80%'}}></div>
+              </div>
+            </div>
+             <div>
+              <div className="flex justify-between mb-1">
+                <span>Install OS</span>
+                <span>95%</span>
+              </div>
+              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-0 h-2">
+                <div className="bg-green-600 h-2 rounded-full" style={{width: '95%'}}></div>
               </div>
             </div>
           </div>
@@ -669,7 +703,7 @@ const Portfolio = () => {
                       </div>
                       <div>
                         <p className="font-semibold">អ៊ីមែល</p>
-                        <p className="text-gray-600 dark:text-gray-300">john.doe@example.com</p>
+                        <p className="text-gray-600 dark:text-gray-300">buoysophit11@gmail.com</p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-4">
@@ -678,7 +712,9 @@ const Portfolio = () => {
                       </div>
                       <div>
                         <p className="font-semibold">លេខទូរស័ព្ទ</p>
-                        <p className="text-gray-600 dark:text-gray-300">+855 12 345 678</p>
+                        <p className="text-gray-600 dark:text-gray-300">+855 886224813</p>
+                        <p className="text-gray-600 dark:text-gray-300">+855 764290073</p>
+
                       </div>
                     </div>
                   </div>
@@ -687,19 +723,55 @@ const Portfolio = () => {
                 <div>
                   <h4 className="text-lg font-semibold mb-4">តាមដានខ្ញុំ</h4>
                   <div className="flex space-x-4">
-                    <a href="#" className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors">
-                      <Github className="h-6 w-6" />
-                    </a>
-                    <a href="#" className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors">
-                      <Linkedin className="h-6 w-6" />
-                    </a>
+                  <a
+                    href="https://github.com/buoysophit"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors"
+                  >
+                    <Github className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/buoy-sophit-06111a2b4/"
+                    className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors"
+                  >
+                    <Linkedin className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://t.me/buoysophitt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors"
+                    aria-label="Telegram"
+                  >
+                    <img
+                    src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg"
+                    alt="Telegram"
+                    className="h-6 w-6"
+                    style={{ filter: darkMode ? 'invert(1)' : 'none' }}
+                    />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/@phitterparker"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors"
+                    aria-label="YouTube"
+                  >
+                    <img
+                    src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
+                    alt="YouTube"
+                    className="h-6 w-6"
+                    style={{ filter: darkMode ? 'invert(1)' : 'none' }}
+                    />
+                  </a>
                   </div>
                 </div>
 
                 <div className="bg-gradient-to-br from-blue-50 to-green-50 dark:from-gray-800 dark:to-gray-700 p-6 rounded-0xl">
                   <h4 className="font-semibold mb-2">អាចរកឃើញខ្ញុំបាន</h4>
                   <p className="text-gray-600 dark:text-gray-300">
-                    ខ្ញុំធ្លាប់ធ្វើការនៅទីក្រុងភ្នំពេញ និងតំបន់ជុំវិញ។ សម្រាប់ការងារកុងត្រាក្ដោត និងការគាំទ្រពីចម្ងាយ ខ្ញុំនៅអាចជួយបាន។
+                    នៅទីក្រុងភ្នំពេញ។ សម្រាប់ការងារ និងការគាំទ្រពីចម្ងាយ ខ្ញុំនៅអាចជួយបាន។
                   </p>
                 </div>
               </div>
@@ -714,7 +786,7 @@ const Portfolio = () => {
             <div className="text-center">
               <div className="mb-8">
                 <h3 className="text-2xl font-bold mb-4">Buoysophit</h3>
-                <p className="text-gray-400">អ្នកអភិវឌ្ឍន៍កម្មវិធី និងអ្នកជំនាញផ្នែករឹង</p>
+                <p className="text-gray-400">computer science and engineering</p>
               </div>
               
               <div className="flex justify-center space-x-6 mb-8">
