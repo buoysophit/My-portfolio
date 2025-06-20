@@ -313,7 +313,6 @@ const Portfolio = () => {
     <div className="mb-12 flex justify-center">
       <IconCloudDemo />
     </div>
-    {/* ...your existing grid of icons... */}
   </div>
 </section>
 
@@ -482,37 +481,37 @@ const Portfolio = () => {
     <section id="non-technical-skills" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">ជំនាញមិនមែនបច្ចេកទេស (Non-Technical Skills)</h2>
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">ជំនាញមិនមែនបច្ចេកទេស (Non-Technical Skills)</h2>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 justify-items-center">
-        {/* Canva */}
-        <div className="flex flex-col items-center group">
-        <div className="w-32 h-32 bg-blue-50 dark:bg-gray-800 rounded-0xl shadow-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-          <img src="/assets/canva.webp" alt="Canva" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-lg">Canva</span>
-        </div>
-        {/* CapCut */}
-        <div className="flex flex-col items-center group">
-        <div className="w-32 h-32 bg-blue-50 dark:bg-gray-800 rounded-0xl shadow-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-          <img src="/assets/capcut.jpg" alt="CapCut" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-lg">CapCut</span>
-        </div>
-        {/* Microsoft Office */}
-        <div className="flex flex-col items-center group">
-        <div className="w-32 h-32 bg-blue-50 dark:bg-gray-800 rounded-0xl shadow-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-          <img src="/assets/office.webp" alt="Microsoft Office" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-lg">Microsoft Office</span>
-        </div>
-        {/* Linux Ricing */}
-        <div className="flex flex-col items-center group">
-        <div className="w-32 h-32 bg-blue-50 dark:bg-gray-800 rounded-0xl shadow-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux Ricing" className="w-20 h-20" />
-        </div>
-        <span className="font-semibold text-lg">Linux Ricing</span>
-        </div>
+      {/* Canva */}
+      <div className="flex flex-col items-center group">
+      <div className="w-44 h-44 bg-blue-50 dark:bg-gray-800 rounded-0xl shadow-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+        <img src="/assets/canva.webp" alt="Canva" className="w-28 h-28" />
+      </div>
+      <span className="font-semibold text-xl">Canva</span>
+      </div>
+      {/* CapCut */}
+      <div className="flex flex-col items-center group">
+      <div className="w-44 h-44 bg-blue-50 dark:bg-gray-800 rounded-0xl shadow-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+        <img src="/assets/capcut.jpg" alt="CapCut" className="w-28 h-28" />
+      </div>
+      <span className="font-semibold text-xl">CapCut</span>
+      </div>
+      {/* Microsoft Office */}
+      <div className="flex flex-col items-center group">
+      <div className="w-44 h-44 bg-blue-50 dark:bg-gray-800 rounded-0xl shadow-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+        <img src="/assets/office.webp" alt="Microsoft Office" className="w-28 h-28" />
+      </div>
+      <span className="font-semibold text-xl">Microsoft Office</span>
+      </div>
+      {/* Linux Ricing */}
+      <div className="flex flex-col items-center group">
+      <div className="w-44 h-44 bg-blue-50 dark:bg-gray-800 rounded-0xl shadow-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux Ricing" className="w-28 h-28" />
+      </div>
+      <span className="font-semibold text-xl">Linux Ricing</span>
+      </div>
       </div>
       </div>
     </section>
