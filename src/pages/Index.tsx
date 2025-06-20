@@ -207,7 +207,8 @@ const Portfolio = () => {
                 <p className="text-xl md:text-2xl mb-8 text-gray-600 dark:text-gray-300">
                   ខ្ញុំជានិស្សិតបរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ នៅសាកលវិទ្យាល័យភ្នំពេញ។ មានចំណង់ចំណូលចិត្តផ្នែក IT Teachnology Sport And Game​, ការអភិវឌ្ឍកម្មវិធី និងបណ្តាញ។ មានបទពិសោធន៍គម្រោងសាលា និងការអនុវត្តការងារពាក់ព័ន្ធ computer science។
                 </p>
-                <button
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <button
                   onClick={() => scrollToSection('about')}
                   className="inline-flex items-center px-8 py-4 
                   bg-black text-white 
@@ -215,10 +216,25 @@ const Portfolio = () => {
                   hover:bg-gray-900 hover:text-white
                   dark:hover:bg-gray-200 dark:hover:text-black
                   font-semibold rounded-0xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                >
+                  >
                   ស្វែងយល់បន្ថែម
                   <ChevronDown className="ml-2 h-5 w-5" />
-                </button>
+                  </button>
+
+                    <a
+                      href="/assets/pdf/Buoysophit-CV-2025.pdf"
+                      download
+                      className="inline-flex items-center px-8 py-4 
+                        bg-green-600 text-white 
+                        dark:bg-green-400 dark:text-black
+                        hover:bg-green-700 hover:text-white
+                        dark:hover:bg-green-500 dark:hover:text-black
+                        font-semibold rounded-0xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    >
+                      ទាញយកប្រវិត្តិរូប PDF
+                    </a>
+                 
+                </div>
               </div>
               {/* Image */}
             <div className="w-full lg:w-1/3 flex justify-center lg:justify-end mb-8 lg:mb-0">
