@@ -5,7 +5,6 @@ import { IconCloudDemo } from "@/components/technology/technologyicon";
 
 
 
-
 const Portfolio = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -169,6 +168,7 @@ const Portfolio = () => {
               </div>
           )}
         </nav>
+
 
         {/* Hero Section */}
         <section
