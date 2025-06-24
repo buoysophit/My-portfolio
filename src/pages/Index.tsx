@@ -536,8 +536,17 @@ const Portfolio = () => {
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-3">Html CSS Javascript With PHP-Ecommerce</h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    គម្រោងអ៊ី-ខមមើសសម្រាប់ហាងលក់ទំនិញប្រើ HTML, CSS, JS និង PHP។
+                  គម្រោងអ៊ី-ខមមើសសម្រាប់ហាងលក់ទំនិញប្រើ HTML, CSS, JS និង PHP។
                   </p>
+                  <a
+                  href="https://github.com/buoysophit/nitastore.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-gray-900 text-white dark:bg-white dark:text-black rounded-0xl font-semibold transition-all duration-300 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-black"
+                  >
+                  View on GitHub
+                  <Github className="ml-2 h-5 w-5" />
+                  </a>
                 </div>
               </div>
               {/* Project 2 */}
