@@ -800,9 +800,9 @@ const Portfolio = () => {
                   </p>
                   <div className="flex-1 flex items-end">
                     <div className="w-full">
-                      <div className="flex justify-center mb-6">
+                      {/* <div className="flex justify-center mb-6">
                         <AndroidDemo />
-                      </div>
+                      </div> */}
                       <a
                         href="https://github.com/buoysophit/nitastore.git"
                         target="_blank"
