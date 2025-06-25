@@ -27,6 +27,7 @@ const slugs = [
   "ruby",
   "csharp",
   "openai",
+  "jwt",
 ];
 
 export function IconCloudDemo() {

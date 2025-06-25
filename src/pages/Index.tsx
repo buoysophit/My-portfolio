@@ -487,7 +487,7 @@ const Portfolio = () => {
                 បច្ចេកវិទ្យា <span className="text-blue-600 dark:text-blue-400">(Technologies)</span>
               </h2>
               <p className="text-lg md:text-xl text-gray-500 dark:text-gray-300 max-w-2xl mx-auto">
-                បច្ចេកវិទ្យាដែលខ្ញុំមានបទពិសោធន៍ និងប្រើប្រាស់សម្រាប់ការងារ និងគម្រោង។
+                បច្ចេកវិទ្យាដែលខ្ញុំប្រើប្រាស់សម្រាប់ការងារ និងគម្រោង។
               </p>
             </div>
             <div className="flex justify-center items-center">
