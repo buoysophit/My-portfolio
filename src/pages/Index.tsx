@@ -5,6 +5,9 @@ import { IconCloudDemo } from "@/components/technology/technologyicon";
 import { Iphone15ProDemo } from "@/components/iphone/iphone15";
 import { AndroidDemo } from "@/components/iphone/android";
 import { PersonIcon } from '@radix-ui/react-icons';
+import { FiHome } from "react-icons/fi";
+import { SlGraduation } from "react-icons/sl";
+
 
 
 
@@ -121,7 +124,7 @@ const Portfolio = () => {
       <div className="bg-white dark:bg-gray-900 text-black dark:text-white">
 
         {/* Modern Dock-Style Navigation (Glassmorphism + Liquid Effect) */}
-        <nav className="fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[95vw] max-w-3xl">
+        <nav className="fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[85vw] max-w-3xl">
           <div className="relative">
             {/* Liquid/Glass background blobs */}
             <div className="absolute -top-8 -left-8 w-40 h-40 bg-blue-200/40 dark:bg-blue-900/30 rounded-full blur-2xl opacity-60 pointer-events-none animate-pulse" />
@@ -151,13 +154,13 @@ const Portfolio = () => {
           <span className="font-bold text-lg text-gray-900 dark:text-white tracking-wide"></span>
               </div>
               {/* Dock Navigation */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-0.15 ">
           {[
-            { id: 'hero', kh: '', en: 'Home', icon: <Home className="w-6 h-6" /> },
-            { id: 'about', kh: '', en: 'About', icon: <PersonIcon className="w-6 h-6" /> },
-            { id: 'skills', kh: '', en: 'Experties', icon: <BinaryIcon className="w-6 h-6" /> },
-            { id: 'projects', kh: '', en: 'Projects', icon: <FolderCheckIcon className="w-6 h-6" /> },
-            { id: 'contact', kh: '', en: 'Contact', icon: <Mail className="w-6 h-6" /> },
+            { id: 'hero', kh: '', en: 'Home', icon: <FiHome className="w-5 h-5" /> },
+            { id: 'about', kh: '', en: 'About', icon: <SlGraduation className="w-5 h-5" /> },
+            { id: 'skills', kh: '', en: 'Experties', icon: <BinaryIcon className="w-5 h-5" /> },
+            { id: 'projects', kh: '', en: 'Projects', icon: <FolderCheckIcon className="w-5 h-5" /> },
+            { id: 'contact', kh: '', en: 'Contact', icon: <Mail className="w-5 h-5" /> },
           ].map((item) => (
             <button
               key={item.id}
@@ -182,18 +185,18 @@ const Portfolio = () => {
           ))}
               </div>
               {/* Dock Actions */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
           {/* Language Toggle */}
             <button
             onClick={() => setLang(lang === 'kh' ? 'en' : 'kh')}
-            className="flex items-center px-2 py-1 rounded-xl bg-gray-100/80 dark:bg-gray-800/80 hover:bg-blue-100/80 dark:hover:bg-blue-900/80 transition hidden sm:flex"
+            className="flex items-center px-2 py-1 rounded-xl transition "
             aria-label="Change Language"
             title="Change Language"
             >
             {lang === 'kh' ? (
-              <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/gb.svg" alt="EN" className="w-3 h-3 rounded" />
+              <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/gb.svg" alt="EN" className="w-6 h-6 " />
             ) : (
-              <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/kh.svg" alt="KH" className="w-3 h-3 rounded" />
+              <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/kh.svg" alt="KH" className="w-6 h-6 " />
             )}
             </button>
           {/* Dark Mode Toggle */}
