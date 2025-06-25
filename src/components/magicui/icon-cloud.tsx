@@ -41,6 +41,21 @@ export function IconCloud({ icons, images }: IconCloudProps) {
   const rotationRef = useRef(rotation);
   const iconCanvasesRef = useRef<HTMLCanvasElement[]>([]);
   const imagesLoadedRef = useRef<boolean[]>([]);
+  const [canvasSize, setCanvasSize] = useState({ width: 400, height: 400 });
+
+  // Responsive canvas size
+  useEffect(() => {
+    function updateSize() {
+      const size = Math.min(window.innerWidth, 500) - 32; // 16px padding each side
+      setCanvasSize({
+        width: size > 320 ? size : 320,
+        height: size > 320 ? size : 320,
+      });
+    }
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
 
   // Create icon canvases once when icons/images change
   useEffect(() => {
@@ -51,39 +66,32 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 
     const newIconCanvases = items.map((item, index) => {
       const offscreen = document.createElement("canvas");
-      offscreen.width = 80; // Reduced from 160
-      offscreen.height = 80; // Reduced from 160
+      offscreen.width = 80;
+      offscreen.height = 80;
       const offCtx = offscreen.getContext("2d");
 
       if (offCtx) {
         if (images) {
-          // Handle image URLs directly
           const img = new Image();
           img.crossOrigin = "anonymous";
           img.src = items[index] as string;
           img.onload = () => {
             offCtx.clearRect(0, 0, offscreen.width, offscreen.height);
-
-            // Create circular clipping path
             offCtx.beginPath();
-            offCtx.arc(40, 40, 35, 0, Math.PI * 2); // Center (40,40), radius 35
+            offCtx.arc(40, 40, 35, 0, Math.PI * 2);
             offCtx.closePath();
             offCtx.clip();
-
-            // Draw the image
-            offCtx.drawImage(img, 10, 10, 60, 60); // Smaller image
-
+            offCtx.drawImage(img, 10, 10, 60, 60);
             imagesLoadedRef.current[index] = true;
           };
         } else {
-          // Handle SVG icons
-          offCtx.scale(1, 1); // No extra scaling needed for 80x80
+          offCtx.scale(1, 1);
           const svgString = renderToString(item as React.ReactElement);
           const img = new Image();
           img.src = "data:image/svg+xml;base64," + btoa(svgString);
           img.onload = () => {
             offCtx.clearRect(0, 0, offscreen.width, offscreen.height);
-            offCtx.drawImage(img, 0, 0, 80, 80); // Smaller SVG
+            offCtx.drawImage(img, 0, 0, 80, 80);
             imagesLoadedRef.current[index] = true;
           };
         }
@@ -100,6 +108,9 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     const newIcons: Icon[] = [];
     const numIcons = items.length || 50;
 
+    // Sphere radius based on canvas size
+    const radius = (Math.min(canvasSize.width, canvasSize.height) / 2) * 0.8;
+
     // Fibonacci sphere parameters
     const offset = 2 / numIcons;
     const increment = Math.PI * (3 - Math.sqrt(5));
@@ -113,18 +124,18 @@ export function IconCloud({ icons, images }: IconCloudProps) {
       const z = Math.sin(phi) * r;
 
       newIcons.push({
-        x: x * 250,
-        y: y * 250,
-        z: z * 250,
+        x: x * radius,
+        y: y * radius,
+        z: z * radius,
         scale: 2,
         opacity: 1,
         id: i,
       });
     }
     setIconPositions(newIcons);
-  }, [icons, images]);
+  }, [icons, images, canvasSize]);
 
-  // Handle mouse events
+  // Mouse events (unchanged)
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const rect = canvasRef.current?.getBoundingClientRect();
     if (!rect || !canvasRef.current) return;
@@ -224,8 +235,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
       const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
       const dx = mousePos.x - centerX;
       const dy = mousePos.y - centerY;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      const speed = 0.003 + (distance / maxDistance) * 0.01;
+      const speed = 0.003 + (Math.sqrt(dx * dx + dy * dy) / maxDistance) * 0.01;
 
       if (targetRotation) {
         const elapsed = performance.now() - targetRotation.startTime;
@@ -251,6 +261,9 @@ export function IconCloud({ icons, images }: IconCloudProps) {
         };
       }
 
+      // Icon size based on canvas size (increased)
+      const iconSize = Math.max(64, Math.min(canvas.width, canvas.height) * 0.22);
+
       iconPositions.forEach((icon, index) => {
         const cosX = Math.cos(rotationRef.current.x);
         const sinX = Math.sin(rotationRef.current.x);
@@ -273,23 +286,27 @@ export function IconCloud({ icons, images }: IconCloudProps) {
         ctx.globalAlpha = opacity;
 
         if (icons || images) {
-          // Only try to render icons/images if they exist
           if (
             iconCanvasesRef.current[index] &&
             imagesLoadedRef.current[index]
           ) {
-            ctx.drawImage(iconCanvasesRef.current[index], -35, -35, 70, 70); // Smaller size
+            ctx.drawImage(
+              iconCanvasesRef.current[index],
+              -iconSize / 2,
+              -iconSize / 2,
+              iconSize,
+              iconSize,
+            );
           }
         } else {
-          // Show numbered circles if no icons/images are provided
           ctx.beginPath();
-          ctx.arc(0, 0, 20, 0, Math.PI * 2);
+          ctx.arc(0, 0, iconSize / 2, 0, Math.PI * 2);
           ctx.fillStyle = "#4444ff";
           ctx.fill();
           ctx.fillStyle = "white";
           ctx.textAlign = "center";
           ctx.textBaseline = "middle";
-          ctx.font = "16px Arial";
+          ctx.font = `${iconSize / 2.5}px Arial`;
           ctx.fillText(`${icon.id + 1}`, 0, 0);
         }
 
@@ -305,20 +322,36 @@ export function IconCloud({ icons, images }: IconCloudProps) {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [icons, images, iconPositions, isDragging, mousePos, targetRotation]);
+  }, [icons, images, iconPositions, isDragging, mousePos, targetRotation, canvasSize]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      width={500}   // Increased from 400
-      height={500}  // Increased from 400
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
-      className="rounded-lg"
-      aria-label="Interactive 3D Icon Cloud"
-      role="img"
-    />
+    <div
+      style={{
+        width: "100%",
+        maxWidth: 500,
+        margin: "0 auto",
+        aspectRatio: "1/1",
+        position: "relative",
+      }}
+    >
+      <canvas
+        ref={canvasRef}
+        width={canvasSize.width}
+        height={canvasSize.height}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        className="rounded-lg w-full h-full"
+        aria-label="Interactive 3D Icon Cloud"
+        role="img"
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "block",
+          touchAction: "none",
+        }}
+      />
+    </div>
   );
 }

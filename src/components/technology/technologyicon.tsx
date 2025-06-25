@@ -10,24 +10,23 @@ const slugs = [
   "html5",
   "css3",
   "nodedotjs",
-  "express",
   "nextdotjs",
   "amazonaws",
   "googlecloud",
-  "azuredevops",
   "nginx",
   "vercel",
-  "testinglibrary",
   "git",
   "github",
   "vscode",
   "tailwind",
-  "androidstudio",
   "laravel",
   "tailwindcss",
-  "linux",
   "lua",
-
+  "python",
+  "php",
+  "ruby",
+  "csharp",
+  "openai",
 ];
 
 export function IconCloudDemo() {
@@ -36,8 +35,13 @@ export function IconCloudDemo() {
   );
 
   return (
-    <div className="relative flex size-full items-center justify-center overflow-hidden">
-      <IconCloud images={images} />
+    <div className="relative flex w-full max-w-full items-center justify-center overflow-hidden py-4">
+      <div className="w-full max-w-[400px] sm:max-w-[600px] md:max-w-[800px]">
+        <IconCloud
+          images={images}
+     // adjust as needed
+        />
+      </div>
     </div>
   );
 }
