@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Sun, Moon, Mail, Phone, Github, Linkedin, ArrowUp, ChevronDown, Menu, X, Globe } from 'lucide-react';
+import { Sun, Moon, Mail, Phone, Github, Linkedin, ArrowUp, ChevronDown, Menu, X, Globe, Home, Folder, BinaryIcon, FolderCheckIcon, Contact2Icon } from 'lucide-react';
 import { SiProbot } from "react-icons/si";
 import { IconCloudDemo } from "@/components/technology/technologyicon";
 import { Iphone15ProDemo } from "@/components/iphone/iphone15";
@@ -119,13 +119,32 @@ const Portfolio = () => {
     <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark' : ''}`}>
       <div className="bg-white dark:bg-gray-900 text-black dark:text-white">
 
-        {/* Modern Dock-Style Navigation (Icon Only on Mobile, Icon+Label on Desktop) */}
+        {/* Modern Dock-Style Navigation (Glassmorphism + Liquid Effect) */}
         <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95vw] max-w-3xl">
           <div className="relative">
-            <div className="flex items-center justify-between px-4 py-2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800">
+            {/* Liquid/Glass background blobs */}
+            <div className="absolute -top-8 -left-8 w-40 h-40 bg-blue-200/40 dark:bg-blue-900/30 rounded-full blur-2xl opacity-60 pointer-events-none animate-pulse" />
+            <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-green-200/40 dark:bg-green-900/30 rounded-full blur-2xl opacity-60 pointer-events-none animate-pulse" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[120%] bg-white/30 dark:bg-gray-900/30 rounded-3xl blur-3xl opacity-40 pointer-events-none" />
+            <div
+              className="flex items-center justify-between px-4 py-2 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 relative overflow-hidden"
+              style={{
+          background:
+            'linear-gradient(135deg, rgba(255,255,255,0.65) 0%, rgba(200,230,255,0.45) 100%)',
+          backdropFilter: 'blur(32px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(32px) saturate(180%)',
+          boxShadow:
+            '0 8px 32px 0 rgba(31, 38, 135, 0.18), 0 1.5px 8px 0 rgba(0,0,0,0.06)',
+          ...(darkMode && {
+            background:
+              'linear-gradient(135deg, rgba(30,41,59,0.85) 0%, rgba(17,24,39,0.85) 100%)',
+            borderColor: 'rgba(51,65,85,0.6)',
+          }),
+              }}
+            >
               {/* Logo */}
               <div className="flex items-center gap-2">
-          <span className="text-2xl text-green-600 dark:text-green-400">
+          <span className="text-2xl text-green-600 dark:text-green-400 hidden sm:inline">
             <SiProbot />
           </span>
           <span className="font-bold text-lg text-gray-900 dark:text-white tracking-wide"></span>
@@ -133,24 +152,29 @@ const Portfolio = () => {
               {/* Dock Navigation */}
               <div className="flex items-center gap-2">
           {[
-            { id: 'hero', kh: 'ទំព័រដើម', en: 'Home', icon: <Globe className="w-6 h-6" /> },
-            { id: 'about', kh: 'អំពីខ្ញុំ', en: 'About', icon: <Mail className="w-6 h-6" /> },
-            { id: 'skills', kh: 'ជំនាញ', en: 'Experties', icon: <SiProbot className="w-6 h-6" /> },
-            { id: 'projects', kh: 'គម្រោង', en: 'Projects', icon: <Github className="w-6 h-6" /> },
-            { id: 'contact', kh: 'ទំនាក់ទំនង', en: 'Contact', icon: <Phone className="w-6 h-6" /> },
+            { id: 'hero', kh: '', en: 'Home', icon: <Home className="w-6 h-6" /> },
+            { id: 'about', kh: '', en: 'About', icon: <Mail className="w-6 h-6" /> },
+            { id: 'skills', kh: '', en: 'Experties', icon: <BinaryIcon className="w-6 h-6" /> },
+            { id: 'projects', kh: '', en: 'Projects', icon: <FolderCheckIcon className="w-6 h-6" /> },
+            { id: 'contact', kh: '', en: 'Contact', icon: <Contact2Icon className="w-6 h-6" /> },
           ].map((item) => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className="relative flex flex-col items-center justify-center px-3 py-2 rounded-xl hover:bg-blue-50 dark:hover:bg-gray-800 transition group"
+              className="relative flex flex-col items-center justify-center px-3 py-2 rounded-xl transition group"
             >
+              {/* Icon always visible */}
               <span>{item.icon}</span>
-              {/* Show label only on md+ screens */}
-              <span className="hidden md:block mt-1 text-xs text-gray-700 dark:text-gray-200 font-medium">
-                {lang === 'kh' ? item.kh : item.en}
-              </span>
-              {/* Tooltip label on hover for mobile (optional, can remove if not needed) */}
-              <span className="md:hidden absolute left-1/2 -translate-x-1/2 top-10 opacity-0 group-hover:opacity-100 pointer-events-none bg-gray-900 text-white dark:bg-white dark:text-black text-xs font-medium px-2 py-0.5 rounded-xl shadow-lg transition-all duration-200 whitespace-nowrap z-50">
+              {/* Label: hidden by default, show on hover above icon */}
+              <span className="
+        absolute left-1/2 -translate-x-1/2 -top-8
+        bg-white dark:bg-gray-900 text-gray-900 dark:text-white
+        text-xs font-semibold px-3 py-1 rounded-xl shadow-lg
+        opacity-0 pointer-events-none
+        group-hover:opacity-100 group-hover:pointer-events-auto
+        transition-all duration-200
+        z-50
+      ">
                 {lang === 'kh' ? item.kh : item.en}
               </span>
             </button>
@@ -161,7 +185,7 @@ const Portfolio = () => {
           {/* Language Toggle */}
           <button
             onClick={() => setLang(lang === 'kh' ? 'en' : 'kh')}
-            className="flex items-center px-2 py-1 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900 transition"
+            className="flex items-center px-2 py-1 rounded-xl bg-gray-100/80 dark:bg-gray-800/80 hover:bg-blue-100/80 dark:hover:bg-blue-900/80 transition"
             aria-label="Change Language"
             title="Change Language"
           >
@@ -174,13 +198,17 @@ const Portfolio = () => {
           {/* Dark Mode Toggle */}
           <button
             onClick={toggleDarkMode}
-            className="flex items-center px-2 py-1 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900 transition"
+            className="flex items-center px-1 py-1 rounded-xl hover:bg-blue-100/80 dark:hover:bg-blue-900/80 transition"
             aria-label="Toggle Dark Mode"
           >
             {darkMode ? <Sun className="h-5 w-5 text-yellow-400" /> : <Moon className="h-5 w-5 text-blue-500" />}
           </button>
-          {/* Mobile Menu Button (hidden, since dock is always visible) */}
               </div>
+            </div>
+            {/* Extra glass shine overlay */}
+            <div className="pointer-events-none absolute inset-0 rounded-2xl overflow-hidden">
+              <div className="absolute top-0 left-0 w-1/2 h-1/3 bg-white/30 dark:bg-white/10 blur-lg opacity-40 rotate-6" />
+              <div className="absolute bottom-0 right-0 w-1/3 h-1/4 bg-blue-200/20 dark:bg-blue-900/10 blur-lg opacity-30 -rotate-12" />
             </div>
           </div>
         </nav>
@@ -867,8 +895,6 @@ const Portfolio = () => {
             </div>
           </div>
         </section>
-
-
 
 
 
