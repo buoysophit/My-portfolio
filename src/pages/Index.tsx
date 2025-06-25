@@ -184,18 +184,18 @@ const Portfolio = () => {
               {/* Dock Actions */}
               <div className="flex items-center gap-2">
           {/* Language Toggle */}
-          <button
+            <button
             onClick={() => setLang(lang === 'kh' ? 'en' : 'kh')}
-            className="flex items-center px-2 py-1 rounded-xl bg-gray-100/80 dark:bg-gray-800/80 hover:bg-blue-100/80 dark:hover:bg-blue-900/80 transition"
+            className="flex items-center px-2 py-1 rounded-xl bg-gray-100/80 dark:bg-gray-800/80 hover:bg-blue-100/80 dark:hover:bg-blue-900/80 transition hidden sm:flex"
             aria-label="Change Language"
             title="Change Language"
-          >
+            >
             {lang === 'kh' ? (
               <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/gb.svg" alt="EN" className="w-6 h-4 rounded" />
             ) : (
               <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/kh.svg" alt="KH" className="w-6 h-4 rounded" />
             )}
-          </button>
+            </button>
           {/* Dark Mode Toggle */}
           <button
             onClick={toggleDarkMode}
