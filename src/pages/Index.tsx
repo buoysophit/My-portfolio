@@ -4,6 +4,7 @@ import { SiProbot } from "react-icons/si";
 import { IconCloudDemo } from "@/components/technology/technologyicon";
 import { Iphone15ProDemo } from "@/components/iphone/iphone15";
 import { AndroidDemo } from "@/components/iphone/android";
+import { PersonIcon } from '@radix-ui/react-icons';
 
 
 
@@ -120,7 +121,7 @@ const Portfolio = () => {
       <div className="bg-white dark:bg-gray-900 text-black dark:text-white">
 
         {/* Modern Dock-Style Navigation (Glassmorphism + Liquid Effect) */}
-        <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95vw] max-w-3xl">
+        <nav className="fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[95vw] max-w-3xl">
           <div className="relative">
             {/* Liquid/Glass background blobs */}
             <div className="absolute -top-8 -left-8 w-40 h-40 bg-blue-200/40 dark:bg-blue-900/30 rounded-full blur-2xl opacity-60 pointer-events-none animate-pulse" />
@@ -153,10 +154,10 @@ const Portfolio = () => {
               <div className="flex items-center gap-2">
           {[
             { id: 'hero', kh: '', en: 'Home', icon: <Home className="w-6 h-6" /> },
-            { id: 'about', kh: '', en: 'About', icon: <Mail className="w-6 h-6" /> },
+            { id: 'about', kh: '', en: 'About', icon: <PersonIcon className="w-6 h-6" /> },
             { id: 'skills', kh: '', en: 'Experties', icon: <BinaryIcon className="w-6 h-6" /> },
             { id: 'projects', kh: '', en: 'Projects', icon: <FolderCheckIcon className="w-6 h-6" /> },
-            { id: 'contact', kh: '', en: 'Contact', icon: <Contact2Icon className="w-6 h-6" /> },
+            { id: 'contact', kh: '', en: 'Contact', icon: <Mail className="w-6 h-6" /> },
           ].map((item) => (
             <button
               key={item.id}
@@ -1230,21 +1231,7 @@ const Portfolio = () => {
           </div>
         </footer>
 
-        {/* Back to Top Button */}
-        {showBackToTop && (
-          <button
-            onClick={scrollToTop}
-            className={`fixed bottom-8 right-8 w-12 h-12 
-              ${darkMode
-          ? 'bg-white text-black'
-          : 'bg-black text-white'
-              } 
-              rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50 flex items-center justify-center`}
-            aria-label="ត្រលប់ទៅកំពូល"
-          >
-            <ArrowUp className="h-6 w-6 mx-auto" />
-          </button>
-        )}
+ 
       </div>
     </div>
   );
