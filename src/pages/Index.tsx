@@ -819,7 +819,11 @@ const Portfolio = () => {
               {/* Project 2 */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-700 flex flex-col overflow-hidden">
                 <div className="relative h-48 flex items-center justify-center bg-gradient-to-br from-green-400 to-green-600">
-                  <span className="text-white text-6xl">📦</span>
+                  <img
+                    src="/assets/imgpro/ecomp2.jpg"
+                    alt="Lravel API With ReactJS - Ecommerce"
+                    className="h-40 w-auto rounded-xl shadow-lg object-cover border-4 border-white dark:border-gray-900"
+                  />
                   <span className="absolute top-4 right-4 bg-white/80 dark:bg-gray-900/80 text-xs px-3 py-1 rounded-full font-semibold text-green-700 dark:text-green-300 shadow">API</span>
                 </div>
                 <div className="flex-1 flex flex-col p-6">
@@ -844,7 +848,11 @@ const Portfolio = () => {
               {/* Project 3 */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-700 flex flex-col overflow-hidden">
                 <div className="relative h-48 flex items-center justify-center bg-gradient-to-br from-purple-400 to-purple-600">
-                  <span className="text-white text-6xl">📱</span>
+                  <img
+                    src="/assets/imgpro/flutter.webp"
+                    alt="Lravel API With Flutter - Ecommerce"
+                    className="h-40 w-auto rounded-xl shadow-lg object-cover border-4 border-white dark:border-gray-900"
+                  />
                   <span className="absolute top-4 right-4 bg-white/80 dark:bg-gray-900/80 text-xs px-3 py-1 rounded-full font-semibold text-purple-700 dark:text-purple-300 shadow">Mobile</span>
                 </div>
                 <div className="flex-1 flex flex-col p-6">
