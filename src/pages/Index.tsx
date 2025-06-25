@@ -201,27 +201,39 @@ const Portfolio = () => {
               {/* Text Content */}
               <div className="w-full lg:w-2/3 text-center lg:text-left">
           <div className="inline-block px-4 py-2 mb-4 rounded-[1.5rem] bg-gradient-to-r from-blue-100 via-green-100 to-white dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 shadow-sm font-medium text-gray-700 dark:text-gray-200 tracking-wide">
-            👋 Hi, I'm
-            <span className="ml-2 font-bold text-blue-700 dark:text-blue-400">Buoy Sophit</span>
+            {lang === 'kh'
+              ? <>👋 សួស្តី ខ្ញុំឈ្មោះ <span className="ml-2 font-bold text-blue-700 dark:text-blue-400">បួយ សាភិត</span></>
+              : <>👋 Hi, I'm <span className="ml-2 font-bold text-blue-700 dark:text-blue-400">Buoy Sophit</span></>
+            }
           </div>
           <h1 className="text-3xl md:text-5xl font-extrabold mb-6 text-gray-900 dark:text-white leading-tight">
-            <span className="block">Computer Science Student</span>
+            <span className="block">
+              {lang === 'kh'
+                ? 'និស្សិតវិទ្យាសាស្ត្រកុំព្យូទ័រ'
+                : 'Computer Science Student'}
+            </span>
             <span className="block mt-2">
               <span className="inline-block bg-gradient-to-r from-blue-600 via-green-500 to-teal-400 bg-clip-text text-transparent">
                 {
             (() => {
-              const words = [
-                { text: "Web Developer", color: "text-green-600 dark:text-green-400" },
-                { text: "Mobile App Developer", color: "text-purple-600 dark:text-purple-400" },
-                { text: "IT Support", color: "text-yellow-600 dark:text-yellow-400" },
-              ];
+              const words = lang === 'kh'
+                ? [
+              { text: "អ្នកអភិវឌ្ឍវេបសាយ", color: "text-green-600 dark:text-green-400" },
+              { text: "អ្នកអភិវឌ្ឍកម្មវិធីទូរស័ព្ទ", color: "text-purple-600 dark:text-purple-400" },
+              { text: "ជំនាញ IT Support", color: "text-yellow-600 dark:text-yellow-400" },
+                  ]
+                : [
+              { text: "Web Developer", color: "text-green-600 dark:text-green-400" },
+              { text: "Mobile App Developer", color: "text-purple-600 dark:text-purple-400" },
+              { text: "IT Support", color: "text-yellow-600 dark:text-yellow-400" },
+                  ];
               const [index, setIndex] = React.useState(0);
               React.useEffect(() => {
                 const interval = setInterval(() => {
                   setIndex(i => (i + 1) % words.length);
                 }, 2500);
                 return () => clearInterval(interval);
-              }, []);
+              }, [lang]);
               return (
                 <span className={words[index].color + " transition-colors duration-500"}>
                   {words[index].text}
@@ -233,14 +245,17 @@ const Portfolio = () => {
             </span>
           </h1>
           <p className="text-lg md:text-2xl mb-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0">
-            Passionate about <span className="font-semibold text-blue-600 dark:text-blue-400">technology</span>, <span className="font-semibold text-green-600 dark:text-green-400">software development</span>, and <span className="font-semibold text-purple-600 dark:text-purple-400">problem solving</span>. Experienced in building web, mobile, and desktop solutions.
+            {lang === 'kh'
+              ? <>ចូលចិត្តបច្ចេកវិទ្យា <span className="font-semibold text-blue-600 dark:text-blue-400">បច្ចេកវិទ្យា</span> <span className="font-semibold text-green-600 dark:text-green-400">ការអភិវឌ្ឍកម្មវិធី</span> និង <span className="font-semibold text-purple-600 dark:text-purple-400">ដោះស្រាយបញ្ហា</span>។ មានបទពិសោធន៍ក្នុងការបង្កើតវេបសាយ កម្មវិធីទូរស័ព្ទ និងដេសក្តុប។</>
+              : <>Passionate about <span className="font-semibold text-blue-600 dark:text-blue-400">technology</span>, <span className="font-semibold text-green-600 dark:text-green-400">software development</span>, and <span className="font-semibold text-purple-600 dark:text-purple-400">problem solving</span>. Experienced in building web, mobile, and desktop solutions.</>
+            }
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <button
               onClick={() => scrollToSection('about')}
               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-black via-gray-900 to-gray-800 text-white dark:from-white dark:via-gray-200 dark:to-gray-300 dark:text-black font-semibold rounded-[1.5rem] shadow-lg hover:scale-105 transition-all duration-300 group"
             >
-              Learn More
+              {lang === 'kh' ? 'អំពីខ្ញុំបន្ថែម' : 'Learn More'}
               <ChevronDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
             </button>
             <a
@@ -248,7 +263,7 @@ const Portfolio = () => {
               download
               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-600 to-teal-400 text-white dark:from-green-400 dark:to-teal-300 dark:text-black font-semibold rounded-[1.5rem] shadow-lg hover:scale-105 transition-all duration-300"
             >
-              Download CV (PDF)
+              {lang === 'kh' ? 'ទាញយកប្រវត្តិរូប (PDF)' : 'Download CV (PDF)'}
             </a>
           </div>
           <div className="flex gap-4 mt-8 justify-center lg:justify-start">
@@ -277,7 +292,6 @@ const Portfolio = () => {
               />
             </div>
             {/* Decorative ring */}
-            {/* Removed border for corner style, keep only the shape */}
             <div className="absolute -inset-2 rounded-[3rem] pointer-events-none"></div>
           </div>
               </div>
@@ -297,86 +311,131 @@ const Portfolio = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left: Profile & Bio */}
               <div>
-                <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-gray-900 dark:text-white">
-                  <span className="inline-block bg-gradient-to-r from-blue-600 via-green-500 to-teal-400 bg-clip-text text-transparent">
-                    អំពីខ្ញុំ
-                  </span>
-                </h2>
-                <p className="text-lg md:text-xl mb-8 text-gray-600 dark:text-gray-300 leading-relaxed">
-                  <span className="font-semibold text-blue-600 dark:text-blue-400">បួយ សាភិត (Buoy Sophit)</span>
-                  ជានិស្សិតបរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ នៅសាកលវិទ្យាល័យភ្នំពេញ។ មានចំណង់ចំណូលចិត្តផ្នែក <span className="font-semibold text-green-600 dark:text-green-400">IT, ការអភិវឌ្ឍកម្មវិធី និងបណ្តាញ</span>។ មានបទពិសោធន៍គម្រោងសាលា និងការអនុវត្តការងារពាក់ព័ន្ធ។
-                </p>
-                <div className="flex flex-col sm:flex-row gap-6 mb-8">
-                  <div className="flex-1 bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow hover:shadow-lg transition">
-                    <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1 flex items-center gap-2">
-                      <Globe className="inline-block w-5 h-5" /> អាសយដ្ឋាន
-                    </h3>
-                    <p className="text-base text-gray-700 dark:text-gray-200">371 St. Thik Thla, Sen Sok, Phnom Penh Cambodia</p>
-                  </div>
-                  <div className="flex-1 bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow hover:shadow-lg transition">
-                    <h3 className="font-semibold text-green-600 dark:text-green-400 mb-1 flex items-center gap-2">
-                      <Phone className="inline-block w-5 h-5" /> លេខទូរស័ព្ទ
-                    </h3>
-                    <p className="text-base text-gray-700 dark:text-gray-200">088 622 4813 <span className="text-xs text-blue-500">(Telegram)</span></p>
-                    <p className="text-base text-gray-700 dark:text-gray-200">076 429 0073</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 mt-2">
-                  <a
-                    href="mailto:buoysophit11@gmail.com"
-                    className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-xl font-semibold shadow hover:bg-blue-700 transition"
-                  >
-                    <Mail className="w-5 h-5 mr-2" /> Email
-                  </a>
-                  <a
-                    href="https://t.me/buoysophitt"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-teal-500 text-white rounded-xl font-semibold shadow hover:bg-teal-600 transition"
-                  >
-                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram" className="w-5 h-5 mr-2" style={{ filter: "invert(1)" }} />
-                    Telegram
-                  </a>
-                </div>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-gray-900 dark:text-white">
+            <span className="inline-block bg-gradient-to-r from-blue-600 via-green-500 to-teal-400 bg-clip-text text-transparent">
+              {lang === 'kh' ? 'អំពីខ្ញុំ' : 'About Me'}
+            </span>
+          </h2>
+          <p className="text-lg md:text-xl mb-8 text-gray-600 dark:text-gray-300 leading-relaxed">
+            {lang === 'kh' ? (
+              <>
+                <span className="font-semibold text-blue-600 dark:text-blue-400">បួយ សាភិត (Buoy Sophit)</span>
+                ជានិស្សិតបរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ នៅសាកលវិទ្យាល័យភ្នំពេញ។ មានចំណង់ចំណូលចិត្តផ្នែក <span className="font-semibold text-green-600 dark:text-green-400">IT, ការអភិវឌ្ឍកម្មវិធី និងបណ្តាញ</span>។ មានបទពិសោធន៍គម្រោងសាលា និងការអនុវត្តការងារពាក់ព័ន្ធ។
+              </>
+            ) : (
+              <>
+                <span className="font-semibold text-blue-600 dark:text-blue-400">Buoy Sophit</span>
+                , a Bachelor of Computer Science student at Royal University of Phnom Penh. Passionate about <span className="font-semibold text-green-600 dark:text-green-400">IT, software development, and networking</span>. Experienced in school projects and practical related work.
+              </>
+            )}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 mb-8">
+            <div className="flex-1 bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow hover:shadow-lg transition">
+              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1 flex items-center gap-2">
+                <Globe className="inline-block w-5 h-5" /> {lang === 'kh' ? 'អាសយដ្ឋាន' : 'Address'}
+              </h3>
+              <p className="text-base text-gray-700 dark:text-gray-200">
+                {lang === 'kh'
+            ? '371 ផ្លូវ ធិក ធ្លា សែនសុខ ភ្នំពេញ កម្ពុជា'
+            : '371 St. Thik Thla, Sen Sok, Phnom Penh Cambodia'}
+              </p>
+            </div>
+            <div className="flex-1 bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow hover:shadow-lg transition">
+              <h3 className="font-semibold text-green-600 dark:text-green-400 mb-1 flex items-center gap-2">
+                <Phone className="inline-block w-5 h-5" /> {lang === 'kh' ? 'លេខទូរស័ព្ទ' : 'Phone'}
+              </h3>
+              <p className="text-base text-gray-700 dark:text-gray-200">
+                088 622 4813 <span className="text-xs text-blue-500">(Telegram)</span>
+              </p>
+              <p className="text-base text-gray-700 dark:text-gray-200">076 429 0073</p>
+            </div>
+          </div>
+          <div className="flex gap-4 mt-2">
+            <a
+              href="mailto:buoysophit11@gmail.com"
+              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-xl font-semibold shadow hover:bg-blue-700 transition"
+            >
+              <Mail className="w-5 h-5 mr-2" /> {lang === 'kh' ? 'អ៊ីមែល' : 'Email'}
+            </a>
+            <a
+              href="https://t.me/buoysophitt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 bg-teal-500 text-white rounded-xl font-semibold shadow hover:bg-teal-600 transition"
+            >
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram" className="w-5 h-5 mr-2" style={{ filter: "invert(1)" }} />
+              Telegram
+            </a>
+          </div>
               </div>
               {/* Right: Education Timeline */}
               <div>
-                <div className="bg-gradient-to-br from-blue-100/80 to-green-100/80 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl shadow-lg">
-                  <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center gap-2">
-                    <span className="inline-block w-2 h-2 bg-blue-500 rounded-full"></span>
-                    ការអប់រំ
-                  </h3>
-                  <ol className="relative border-l-2 border-blue-200 dark:border-blue-700 ml-2">
-                    <li className="mb-8 ml-6">
-                      <span className="absolute -left-3 flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full ring-4 ring-white dark:ring-gray-900">
-                        <span className="w-2 h-2 bg-white rounded-full"></span>
-                      </span>
-                      <h4 className="text-lg font-semibold text-blue-700 dark:text-blue-300">Bachelor Degree of Computer Science</h4>
-                      <p className="text-gray-700 dark:text-gray-200">Royal University Of Phnom Penh <span className="text-xs text-gray-500">(2021-2025)</span></p>
-                    </li>
-                    <li className="mb-8 ml-6">
-                      <span className="absolute -left-3 flex items-center justify-center w-6 h-6 bg-green-500 rounded-full ring-4 ring-white dark:ring-gray-900">
-                        <span className="w-2 h-2 bg-white rounded-full"></span>
-                      </span>
-                      <h4 className="text-lg font-semibold text-green-700 dark:text-green-300">Hun Sen Thmor Pouk High School</h4>
-                      <p className="text-gray-700 dark:text-gray-200">Graduated <span className="text-xs text-gray-500">(2018-2021)</span></p>
-                    </li>
-                    <li className="mb-8 ml-6">
-                      <span className="absolute -left-3 flex items-center justify-center w-6 h-6 bg-yellow-500 rounded-full ring-4 ring-white dark:ring-gray-900">
-                        <span className="w-2 h-2 bg-white rounded-full"></span>
-                      </span>
-                      <h4 className="text-lg font-semibold text-yellow-700 dark:text-yellow-300">Phum Thmey Secondary School</h4>
-                      <p className="text-gray-700 dark:text-gray-200">Graduated</p>
-                    </li>
-                    <li className="ml-6">
-                      <span className="absolute -left-3 flex items-center justify-center w-6 h-6 bg-purple-500 rounded-full ring-4 ring-white dark:ring-gray-900">
-                        <span className="w-2 h-2 bg-white rounded-full"></span>
-                      </span>
-                      <h4 className="text-lg font-semibold text-purple-700 dark:text-purple-300">Rolom Chrey Primary School</h4>
-                      <p className="text-gray-700 dark:text-gray-200">Graduated</p>
-                    </li>
-                  </ol>
-                </div>
+          <div className="bg-gradient-to-br from-blue-100/80 to-green-100/80 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl shadow-lg">
+            <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center gap-2">
+              <span className="inline-block w-2 h-2 bg-blue-500 rounded-full"></span>
+              {lang === 'kh' ? 'ការអប់រំ' : 'Education'}
+            </h3>
+            <ol className="relative border-l-2 border-blue-200 dark:border-blue-700 ml-2">
+              <li className="mb-8 ml-6">
+                <span className="absolute -left-3 flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full ring-4 ring-white dark:ring-gray-900">
+            <span className="w-2 h-2 bg-white rounded-full"></span>
+                </span>
+                <h4 className="text-lg font-semibold text-blue-700 dark:text-blue-300">
+            {lang === 'kh'
+              ? 'បរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ'
+              : 'Bachelor Degree of Computer Science'}
+                </h4>
+                <p className="text-gray-700 dark:text-gray-200">
+            {lang === 'kh'
+              ? <>សាកលវិទ្យាល័យភ្នំពេញ <span className="text-xs text-gray-500">(២០២១-២០២៥)</span></>
+              : <>Royal University Of Phnom Penh <span className="text-xs text-gray-500">(2021-2025)</span></>
+            }
+                </p>
+              </li>
+              <li className="mb-8 ml-6">
+                <span className="absolute -left-3 flex items-center justify-center w-6 h-6 bg-green-500 rounded-full ring-4 ring-white dark:ring-gray-900">
+            <span className="w-2 h-2 bg-white rounded-full"></span>
+                </span>
+                <h4 className="text-lg font-semibold text-green-700 dark:text-green-300">
+            {lang === 'kh'
+              ? 'វិទ្យាល័យ ហ៊ុន សែន ថ្មពួក'
+              : 'Hun Sen Thmor Pouk High School'}
+                </h4>
+                <p className="text-gray-700 dark:text-gray-200">
+            {lang === 'kh'
+              ? <>បញ្ចប់ការសិក្សា <span className="text-xs text-gray-500">(២០១៨-២០២១)</span></>
+              : <>Graduated <span className="text-xs text-gray-500">(2018-2021)</span></>
+            }
+                </p>
+              </li>
+              <li className="mb-8 ml-6">
+                <span className="absolute -left-3 flex items-center justify-center w-6 h-6 bg-yellow-500 rounded-full ring-4 ring-white dark:ring-gray-900">
+            <span className="w-2 h-2 bg-white rounded-full"></span>
+                </span>
+                <h4 className="text-lg font-semibold text-yellow-700 dark:text-yellow-300">
+            {lang === 'kh'
+              ? 'វិទ្យាល័យភូមិថ្មី'
+              : 'Phum Thmey Secondary School'}
+                </h4>
+                <p className="text-gray-700 dark:text-gray-200">
+            {lang === 'kh' ? 'បញ្ចប់ការសិក្សា' : 'Graduated'}
+                </p>
+              </li>
+              <li className="ml-6">
+                <span className="absolute -left-3 flex items-center justify-center w-6 h-6 bg-purple-500 rounded-full ring-4 ring-white dark:ring-gray-900">
+            <span className="w-2 h-2 bg-white rounded-full"></span>
+                </span>
+                <h4 className="text-lg font-semibold text-purple-700 dark:text-purple-300">
+            {lang === 'kh'
+              ? 'សាលាបឋមសិក្សា រលំជ្រៃ'
+              : 'Rolom Chrey Primary School'}
+                </h4>
+                <p className="text-gray-700 dark:text-gray-200">
+            {lang === 'kh' ? 'បញ្ចប់ការសិក្សា' : 'Graduated'}
+                </p>
+              </li>
+            </ol>
+          </div>
               </div>
             </div>
           </div>
