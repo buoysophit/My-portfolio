@@ -1,9 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Sun, Moon, Mail, Phone, Github, Linkedin, ArrowUp, ChevronDown, Menu, X, Globe } from 'lucide-react';
 import { SiProbot } from "react-icons/si";
 import { IconCloudDemo } from "@/components/technology/technologyicon";
+import { Iphone15ProDemo } from "@/components/iphone/iphone15";
+import { AndroidDemo } from "@/components/iphone/android";
 
 
+
+
+// Add a custom hook for intersection observer animation
+function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold }
+    );
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return [ref, inView] as const;
+}
 
 const Portfolio = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -83,6 +104,16 @@ const Portfolio = () => {
     (document.getElementById('email') as HTMLInputElement).value = '';
     (document.getElementById('message') as HTMLTextAreaElement).value = '';
   };
+
+  // Animation refs for sections
+  const [aboutRef, aboutInView] = useInView();
+  const [techRef, techInView] = useInView();
+  const [expRef, expInView] = useInView();
+  const [skillsRef, skillsInView] = useInView();
+  const [nonTechRef, nonTechInView] = useInView();
+  const [projectsRef, projectsInView] = useInView();
+  const [certRef, certInView] = useInView();
+  const [contactRef, contactInView] = useInView();
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark' : ''}`}>
@@ -262,13 +293,19 @@ const Portfolio = () => {
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-20 bg-white dark:bg-gray-900">
+        <section
+          id="about"
+          ref={aboutRef}
+          className={`py-20 bg-white dark:bg-gray-900 transition-all duration-700
+            ${aboutInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+          `}
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">អំពីខ្ញុំ</h2>
                 <p className="text-lg mb-6 text-gray-600 dark:text-gray-300">
-                  ខ្ញុំឈ្មោះ បួយ សាភិត (Buoy Sophit) ជានិស្សិតបរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ នៅសាកលវិទ្យាល័យភ្នំពេញ។ មានចំណង់ចំណូលចិត្តផ្នែក IT, ការអភិវឌ្ឍកម្មវិធី និងបណ្តាញ។ មានបទពិសោធន៍គម្រោងសាលា និងការអនុវត្តការងារពាក់ព័ន្ធ。
+                  ខ្ញុំឈ្មោះ បuyer សាភិត (Buoy Sophit) ជានិស្សិតបរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ នៅសាកលវិទ្យាល័យភ្នំពេញ។ មានចំណង់ចំណូលចិត្តផ្នែក IT, ការអភិវឌ្ឍកម្មវិធី និងបណ្តាញ។ មានបទពិសោធន៍គម្រោងសាលា និងការអនុវត្តការងារពាក់ព័ន្ធ。
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-0xl">
@@ -307,8 +344,15 @@ const Portfolio = () => {
           </div>
         </section>
 
-<section id="technologies" className="py-20 bg-gray-50 dark:bg-gray-800">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Technologies Section */}
+        <section
+          id="technologies"
+          ref={techRef}
+          className={`py-20 bg-gray-50 dark:bg-gray-800 transition-all duration-700
+            ${techInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+          `}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-16">
       <h2 className="text-3xl md:text-4xl font-bold mb-4">បច្ចេកវិទ្យា (Technologies)</h2>
       <p className="text-lg text-gray-600 dark:text-gray-300">បច្ចេកវិទ្យាដែលខ្ញុំមានបទពិសោធន៍</p>
@@ -317,11 +361,17 @@ const Portfolio = () => {
       <IconCloudDemo />
     </div>
   </div>
-</section>
+        </section>
 
 
         {/* Experience Section */}
-        <section id="experience" className="py-20 bg-white dark:bg-gray-900">
+        <section
+          id="experience"
+          ref={expRef}
+          className={`py-20 bg-white dark:bg-gray-900 transition-all duration-700
+            ${expInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+          `}
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">បទពិសោធន៍ប្រើប្រព័ន្ធប្រតិបត្តិការ (OS Experience)</h2>
@@ -360,7 +410,13 @@ const Portfolio = () => {
 
 
         {/* Skills Section */}
-        <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-800">
+        <section
+          id="skills"
+          ref={skillsRef}
+          className={`py-20 bg-gray-50 dark:bg-gray-800 transition-all duration-700
+            ${skillsInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+          `}
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 uppercase">What Can I Do?</h2>
@@ -481,7 +537,13 @@ const Portfolio = () => {
         </section>
 
     {/* Non-Technical Skills Section */}
-    <section id="non-technical-skills" className="py-20 bg-white dark:bg-gray-900">
+    <section
+      id="non-technical-skills"
+      ref={nonTechRef}
+      className={`py-20 bg-white dark:bg-gray-900 transition-all duration-700
+        ${nonTechInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+      `}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
       <h2 className="text-3xl md:text-4xl font-bold mb-4">ជំនាញមិនមែនបច្ចេកទេស (Non-Technical Skills)</h2>
@@ -521,7 +583,13 @@ const Portfolio = () => {
 
   
         {/* Projects Section */}
-        <section id="projects" className="py-20 bg-white dark:bg-gray-900">
+        <section
+          id="projects"
+          ref={projectsRef}
+          className={`py-20 bg-white dark:bg-gray-900 transition-all duration-700
+            ${projectsInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+          `}
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 uppercase">Recent Projects School</h2>
@@ -529,24 +597,35 @@ const Portfolio = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Project 1 */}
-              <div className="bg-white dark:bg-gray-800 rounded-0xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden">
+                <div className="bg-white dark:bg-gray-800 rounded-0xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden">
                 <div className="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                  <span className="text-white text-6xl">🛒</span>
+                  <img
+                  src="/assets/imgpro/ecomp1.jpg"
+                  alt="Ecommerce HTML CSS JS PHP"
+                  className="h-40 w-auto rounded-lg shadow-md object-cover"
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-3">Html CSS Javascript With PHP-Ecommerce</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  គម្រោងអ៊ី-ខមមើសសម្រាប់ហាងលក់ទំនិញប្រើ HTML, CSS, JS និង PHP។
+                  <p className="text-gray-600 dark:text-gray-300 mb-10">
+                  Ecommerce សម្រាប់ហាងលក់ទំនិញប្រើ HTML, CSS, JS និង PHP។
                   </p>
-                  <a
-                  href="https://github.com/buoysophit/nitastore.git"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-gray-900 text-white dark:bg-white dark:text-black rounded-0xl font-semibold transition-all duration-300 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-black"
-                  >
-                  View on GitHub
-                  <Github className="ml-2 h-5 w-5" />
-                  </a>
+                  <div className="mt-8 flex justify-center mb-10 items-center">
+                    <AndroidDemo />
+                  </div>
+                    <div className="flex justify-center">
+                    <a
+                      href="https://github.com/buoysophit/nitastore.git"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-4 py-2 bg-gray-900 text-white dark:bg-white dark:text-black rounded-0xl font-semibold transition-all duration-300 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-black"
+                    >
+                      View on GitHub
+                      <Github className="ml-2 h-5 w-5" />
+                    </a>
+                    </div>
+        
+                 
                 </div>
               </div>
               {/* Project 2 */}
@@ -577,8 +656,20 @@ const Portfolio = () => {
           </div>
         </section>
 
+
+
+
+
+
+
 {/* Certificate Section */}
-<section id="certificates" className="py-20 bg-gray-50 dark:bg-gray-800">
+<section
+      id="certificates"
+      ref={certRef}
+      className={`py-20 bg-gray-50 dark:bg-gray-800 transition-all duration-700
+        ${certInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+      `}
+    >
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-12">
       <h2 className="text-3xl md:text-4xl font-bold mb-4 uppercase">Certificates</h2>
@@ -619,8 +710,16 @@ const Portfolio = () => {
 
 
 
+
+
         {/* Contact Section */}
-        <section id="contact" className="py-20 bg-white dark:bg-gray-900">
+        <section
+          id="contact"
+          ref={contactRef}
+          className={`py-20 bg-white dark:bg-gray-900 transition-all duration-700
+            ${contactInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+          `}
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">ទំនាក់ទំនង</h2>
