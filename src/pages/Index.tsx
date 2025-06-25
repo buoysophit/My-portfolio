@@ -191,9 +191,9 @@ const Portfolio = () => {
             title="Change Language"
             >
             {lang === 'kh' ? (
-              <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/gb.svg" alt="EN" className="w-6 h-4 rounded" />
+              <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/gb.svg" alt="EN" className="w-3 h-3 rounded" />
             ) : (
-              <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/kh.svg" alt="KH" className="w-6 h-4 rounded" />
+              <img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/kh.svg" alt="KH" className="w-3 h-3 rounded" />
             )}
             </button>
           {/* Dark Mode Toggle */}
